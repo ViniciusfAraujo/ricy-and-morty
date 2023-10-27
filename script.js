@@ -5,7 +5,6 @@ const genderFilter = document.querySelector('#gender')
 const statusFilter = document.querySelector('#status')
 const loadBtn = document.querySelector('#load-more')
 
-
 const API = 'https://rickandmortyapi.com/api'
 const defaultFiltrers = {
     name: '',
@@ -15,42 +14,44 @@ const defaultFiltrers = {
     page: 1,
 }
 
-
 async function getCharacters({ name, species, gender, status, page = 1 }){
     const response = await fetch(`${API}/character?name=${name}&species=${species}&gender=${gender}&gender=${gender}&status=${status}&page=${page}`)
-
     const characters = await response.json()
-    //console.log(characters.results);
 
     return characters.results
 }
 
-async function getEpisode({ name, count }){
-    const episode = fetch(`${API}/episode?name=${name}&count=${count}`)
-
-    const epi = await episode.json()
-
-    return epi.results
+async function getEpisodes() {
+    let url = `${API}/episode`;
+    let episodes = [];
+  
+    while (url) {
+      const response = await fetch(url);
+      const data = await response.json();
+      episodes = episodes.concat(data.results);
+      url = data.info.next;
+    }
+  
+    return episodes;
 }
 
-
-async function render({characters}){
-    characters.forEach((character) => {
-
-        return charsContainer.innerHTML += `
+async function render({ characters, episodes }) {
+    for (const character of characters) {
+      charsContainer.innerHTML += `
         <div class="char" data-charId="${character.id}">
-            <img src="${character.image}" alt="">
-            <div class="char-info">
-                <h3>${character.name}</h3>
-                <span>${character.status}</span>
-                <span>${character.gender}</span>
-                <span>${character.species}</span>
-                <span>O(a)  aparece em episódio(s)</span>
-            </div>
+          <img src="${character.image}" alt="">
+          <div class="char-info">
+            <h3>${character.name}</h3>
+            <span>${character.status}</span>
+            <span>${character.gender}</span>
+            <span>${character.species}</span>
+            <span>O(a) aparece em ${character.episode.length} episódio(s)</span>
+          </div>
         </div>
-        `
-    })
-}
+      `;
+    }
+  }
+  
 
 function handleFilter(type, e){
     return async () => {
@@ -88,8 +89,10 @@ function addEvents(){
 
 async function main(){
     const characters = await getCharacters(defaultFiltrers)
+    const episodes = await getEpisodes();
     addEvents()
     render({characters})
 }
 
 main()
+
