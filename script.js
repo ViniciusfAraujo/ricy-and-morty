@@ -12,20 +12,25 @@ const defaultFiltrers = {
     species: '',
     gender: '',
     status: '',
-    page: 1
+    page: 1,
 }
+
 
 async function getCharacters({ name, species, gender, status, page = 1 }){
     const response = await fetch(`${API}/character?name=${name}&species=${species}&gender=${gender}&gender=${gender}&status=${status}&page=${page}`)
 
     const characters = await response.json()
-    console.log(characters.results);
+    //console.log(characters.results);
 
     return characters.results
 }
 
-async function getEpisode(info){
-    const episode = await fetch(`${API}/episode`)
+async function getEpisode({ name, count }){
+    const episode = fetch(`${API}/episode?name=${name}&count=${count}`)
+
+    const epi = await episode.json()
+
+    return epi.results
 }
 
 
@@ -40,7 +45,7 @@ async function render({characters}){
                 <span>${character.status}</span>
                 <span>${character.gender}</span>
                 <span>${character.species}</span>
-                <span>${character.episode}</span>
+                <span>O(a)  aparece em episódio(s)</span>
             </div>
         </div>
         `
