@@ -45,7 +45,7 @@ async function render({ characters, episodes }) {
             <span>${character.status}</span>
             <span>${character.gender}</span>
             <span>${character.species}</span>
-            <span>O(a) aparece em ${character.episode.length} episódio(s)</span>
+            <span>O(a) <strong>${character.name}</strong> aparece em <strong>${character.episode.length}</strong> episódio(s)</span>
           </div>
         </div>
       `;
