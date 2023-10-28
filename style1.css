@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:ital,wght@1,200;1,600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #2a2a2a;
+  padding-bottom: 20px;
+}
+
+h3 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+}
+span {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+}
+
+header {
+  background: linear-gradient(
+    90deg,
+    rgba(2, 89, 89, 1) 12%,
+    rgba(3, 140, 90, 1) 48%,
+    rgba(3, 140, 90, 1) 96%
+  );
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px 0;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 100px;
+  margin-left: 35%;
+  background-color: #fff;
+  width: 660px;
+  height: auto;
+}
+
+#logo {
+  height: 139px;
+}
+
+.character-profile{
+  background-color: #fff;
+  margin-top: 10px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 5px;
+}
+.image {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  overflow-clip-margin: content-box;
+  overflow: clip;
+  max-width: 100%;
+  display: block;
+}
+.character-profile_info {
+  display: block;
+  text-align: left;
+  margin-left: 5px;
+  align-content: flex-start;
+  gap: 50px;
+}
+
+.character-profile_infodata {
+  /* margin: 3px 0; */
+  margin-top: 15px;
+  font-size: 23px;
+}
+div {
+  display: block;
+}

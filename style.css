@@ -13,7 +13,6 @@
   
   
   body {
-    
     background-color: #2a2a2a;
     padding-bottom: 20px;
   }
@@ -71,7 +70,7 @@
   
   .chars .filters .filter {
     padding: 10px 20px;
-    background: #F2D272;
+    background: #D9D8D7;
     border: 1px solid #000;
     outline: none;
     border-radius: 5px;
@@ -114,10 +113,15 @@
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background: #fff;
-    color: #2196f3;
+    background: #3a3838;
+    color: #fff;
     font-size: 16px;
     cursor: pointer;
     text-transform: uppercase;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    transition: all .45s ease;
+  }
+
+  button:hover{
+    transform: scale(0.9);
   }
